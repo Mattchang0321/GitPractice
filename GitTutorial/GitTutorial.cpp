@@ -5,13 +5,19 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+
 bool Guess(int number) {
     static int target = -1;
     srand(time(NULL));
     if (target == -1) {
         target = rand() % 100 + 1;
     }
-    if (number > target) {
+    if (number == target) {
+        std::cout << "Correct ！！";
+        target = -1;
+        return true;
+    }
+    else if (number > target) {
         std::cout<<"Smaller"<<std::endl;
         return false;
     }
@@ -19,7 +25,13 @@ bool Guess(int number) {
         std::cout<<"Bigger"<<std::endl;
         return false;
     }
-    return true;
+    
+    else
+    {
+        std::cout << "Wroing" << std::endl;
+        return false;
+    }
+    
 }
 int main()
 {
